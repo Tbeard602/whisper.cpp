@@ -1,0 +1,58 @@
+version: 2
+updates:
+  - package-ecosystem: "gomod"
+    directory: "/bindings/go"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Phoenix"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "gradle"
+    directory: "/bindings/java"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Phoenix"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "gradle"
+    directory: "/examples/whisper.android"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Phoenix"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "gradle"
+    directory: "/examples/whisper.android.java"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Phoenix"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/bindings/javascript"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Phoenix"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "npm"
+    directory: "/examples/addon.node"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Phoenix"
+    open-pull-requests-limit: 5
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "America/Phoenix"
+    open-pull-requests-limit: 5
