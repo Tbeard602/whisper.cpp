@@ -15,6 +15,8 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: true
+          # Updating upstream workflow files requires a workflow-enabled credential.
+          token: ${{ secrets.UPSTREAM_SYNC_TOKEN || secrets.GH_PAT || github.token }}
       - name: Merge upstream if there are no conflicts
         shell: bash
         run: |
