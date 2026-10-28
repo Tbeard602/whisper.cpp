@@ -6,6 +6,10 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
@@ -36,6 +40,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Log in to Docker Hub
+        if: github.event_name == 'push'
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -60,9 +65,10 @@ jobs:
       - name: Generate tags
         id: tags
         run: |
-          TAGS="ghcr.io/${{ github.repository }}:${{ matrix.config.tag }}"
+          IMAGE="ghcr.io/${GITHUB_REPOSITORY,,}"
+          TAGS="$IMAGE:${{ matrix.config.tag }}"
           if [ "${{ github.event_name }}" == "push" ]; then
-            TAGS="$TAGS,ghcr.io/${{ github.repository }}:${{ matrix.config.tag }}-${{ env.COMMIT_SHA }}"
+            TAGS="$TAGS,$IMAGE:${{ matrix.config.tag }}-${{ env.COMMIT_SHA }}"
           fi
           echo "tags=$TAGS" >> $GITHUB_OUTPUT
 
